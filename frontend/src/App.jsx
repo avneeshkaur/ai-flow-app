@@ -9,6 +9,8 @@ import {
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import axios from 'axios'
+
+const API = import.meta.env.VITE_API_URL || ''
 import InputNode from './nodes/InputNode'
 import ResultNode from './nodes/ResultNode'
 
@@ -90,7 +92,7 @@ export default function App() {
     updateResult('', true)
 
     try {
-      const res = await axios.post('/api/ask-ai', { prompt })
+      const res = await axios.post(`${API}/api/ask-ai`, { prompt })
       setResponse(res.data.response)
       updateResult(res.data.response, false)
     } catch (err) {
@@ -109,7 +111,7 @@ export default function App() {
     }
 
     try {
-      await axios.post('/api/save', { prompt, response })
+      await axios.post(`${API}/api/save`, { prompt, response })
       setSaveMsg('Saved!')
     } catch {
       setSaveMsg('Save failed.')
@@ -118,7 +120,7 @@ export default function App() {
 
   async function loadHistory() {
     try {
-      const res = await axios.get('/api/history')
+      const res = await axios.get(`${API}/api/history`)
       setHistory(res.data)
       setShowHistory(true)
     } catch {
