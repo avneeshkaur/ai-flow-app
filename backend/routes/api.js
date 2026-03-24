@@ -34,7 +34,10 @@ router.post('/ask-ai', async (req, res) => {
     res.json({ response: aiText })
   } catch (err) {
     console.log('AI call failed:', err.message)
-    res.status(500).json({ error: 'AI request failed' })
+    console.log('Response data:', err.response?.data)
+    console.log('API Key present:', !!process.env.OPENROUTER_API_KEY)
+    console.log('API Key length:', process.env.OPENROUTER_API_KEY?.length)
+    res.status(500).json({ error: 'AI request failed', detail: err.response?.data })
   }
 })
 
