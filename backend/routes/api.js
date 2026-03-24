@@ -15,7 +15,7 @@ router.post('/ask-ai', async (req, res) => {
     const result = await axios.post(
       'https://openrouter.ai/api/v1/chat/completions',
       {
-        model: 'google/gemini-2.0-flash-lite-preview-02-05:free',
+        model: 'arcee-ai/trinity-mini:free',
         messages: [
           { role: 'user', content: prompt }
         ]
