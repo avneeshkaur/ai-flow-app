@@ -31,7 +31,7 @@ router.post('/ask-ai', async (req, res) => {
       },
       {
         headers: {
-          'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY?.trim()}`,
           'Content-Type': 'application/json',
           'HTTP-Referer': 'https://ai-flow-app-one.vercel.app',
           'X-Title': 'AI Flow App'
