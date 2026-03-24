@@ -15,7 +15,7 @@ router.post('/ask-ai', async (req, res) => {
     const result = await axios.post(
       'https://openrouter.ai/api/v1/chat/completions',
       {
-        model: 'mistralai/mistral-7b-instruct:free',
+        model: 'google/gemini-2.0-flash-lite-preview-02-05:free',
         messages: [
           { role: 'user', content: prompt }
         ]
