@@ -4,6 +4,15 @@ const Conversation = require('../models/Conversation')
 
 const router = express.Router()
 
+router.get('/debug', (req, res) => {
+  const key = process.env.OPENROUTER_API_KEY || ''
+  res.json({
+    keyLength: key.length,
+    keyStart: key.substring(0, 15),
+    mongoSet: !!process.env.MONGO_URI
+  })
+})
+
 router.post('/ask-ai', async (req, res) => {
   const { prompt } = req.body
 
